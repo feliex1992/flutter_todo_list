@@ -12,7 +12,6 @@ class SignInForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
-        // TODO: Listener signin email and password not work properly.
         state.authFailureOrSuccessOption.fold(
           () => null,
           (a) => a.fold(

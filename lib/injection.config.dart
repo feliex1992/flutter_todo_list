@@ -16,8 +16,8 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i7;
 import 'domain/auth/i_auth_facade.dart' as _i5;
-import 'infrastructure/auth/core/farebase_injectable_module.dart' as _i8;
 import 'infrastructure/auth/firebase_auth_facade.dart' as _i6;
+import 'infrastructure/core/farebase_injectable_module.dart' as _i8;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt

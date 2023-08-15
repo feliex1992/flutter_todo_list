@@ -1,9 +1,9 @@
 import 'dart:async';
 
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_todo_list/domain/auth/auth_failure.dart';
 import 'package:flutter_todo_list/domain/auth/i_auth_facade.dart';
 import 'package:flutter_todo_list/domain/auth/value_objects.dart';

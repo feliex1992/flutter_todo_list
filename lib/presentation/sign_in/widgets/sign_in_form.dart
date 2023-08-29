@@ -1,8 +1,11 @@
 import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_todo_list/application/auth/auth_bloc.dart';
 
 import 'package:flutter_todo_list/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:flutter_todo_list/presentation/routes/router.gr.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({super.key});
@@ -20,12 +23,17 @@ class SignInForm extends StatelessWidget {
                   cancelledByUser: (_) => 'Cancelled',
                   serverError: (_) => 'Server error',
                   emailAlreadyInUse: (_) => 'Email already in use',
-                  invalidEmailAndPasswordCombination:
-                      (_) => 'Invalid email and password combination',
+                  invalidEmailAndPasswordCombination: (_) =>
+                      'Invalid email and password combination',
                 ),
               ).show(context);
             },
-            (r) => null,
+            (r) {
+              AutoRouter.of(context).replace(const NotesOverViewRoute());
+              context
+                  .read<AuthBloc>()
+                  .add(const AuthEvent.authCheckRequested());
+            },
           ),
         );
       },

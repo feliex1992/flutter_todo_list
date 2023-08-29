@@ -1,4 +1,3 @@
-import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,9 +14,7 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         state.map(
           initial: (_) {},
-          authenticated: (_) {
-            FlushbarHelper.createSuccess(message: 'Login Success!!!').show(context);
-          },
+          authenticated: (_) => AutoRouter.of(context).replace(const NotesOverViewRoute()),
           unauthenticated: (_) => AutoRouter.of(context).replace(const SignInRoute()),
         );
       },

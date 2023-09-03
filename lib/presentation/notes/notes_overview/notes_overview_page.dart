@@ -1,5 +1,4 @@
 import 'package:another_flushbar/flushbar_helper.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +6,7 @@ import 'package:flutter_todo_list/application/auth/auth_bloc.dart';
 import 'package:flutter_todo_list/application/notes/note_actor/note_actor_bloc.dart';
 import 'package:flutter_todo_list/application/notes/note_watcher/note_watcher_bloc.dart';
 import 'package:flutter_todo_list/injection.dart';
+import 'package:flutter_todo_list/presentation/notes/notes_overview/widgets/notes_overview_body.dart';
 import 'package:flutter_todo_list/presentation/routes/router.gr.dart';
 
 @RoutePage()
@@ -16,8 +16,10 @@ class NotesOverViewPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<NoteWatcherBloc>(
-          create: (context) => getIt<NoteWatcherBloc>()
-            ..add(const NoteWatcherEvent.watchAllStarted()),
+          create: (context) {
+            return getIt<NoteWatcherBloc>()
+              ..add(const NoteWatcherEvent.watchAllStarted());
+          },
         ),
         BlocProvider<NoteActorBloc>(
           create: (context) => getIt<NoteActorBloc>(),
@@ -69,6 +71,7 @@ class NotesOverViewPage extends StatelessWidget {
               )
             ],
           ),
+          body: NotesOverviewBody(),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               // TODO: Navigate to NoteFormPage

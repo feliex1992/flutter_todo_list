@@ -11,7 +11,6 @@ part 'auth_bloc.freezed.dart';
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthFacade _authFacade;
-
   AuthBloc(this._authFacade) : super(const Initial()) {
     on<AuthEvent>((event, emit) async {
       if (event is AuthCheckRequested) {

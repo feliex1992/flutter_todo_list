@@ -35,7 +35,6 @@ class NoteRepository implements INoteRepository {
             e.message!.contains('PERMISSION_DENIED')) {
           return left(const NoteFailure.insufficientPermission());
         } else {
-          // log.error(e.toString());
           return left(const NoteFailure.unexpected());
         }
       },

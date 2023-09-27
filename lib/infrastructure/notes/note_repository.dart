@@ -125,7 +125,7 @@ class NoteRepository implements INoteRepository {
         return left(NoteFailure.insufficientPermission());
       } else if (e.message!.contains('NOT_FOUND')) {
         return left(NoteFailure.unableToDelete());
-      }else {
+      } else {
         return left(NoteFailure.unexpected());
       }
     }

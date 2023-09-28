@@ -6,7 +6,8 @@ part of 'note_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_NoteDto _$$_NoteDtoFromJson(Map<String, dynamic> json) => _$_NoteDto(
+_$NoteDtoImpl _$$NoteDtoImplFromJson(Map<String, dynamic> json) =>
+    _$NoteDtoImpl(
       id: json['id'] as String?,
       body: json['body'] as String,
       color: json['color'] as int,
@@ -17,7 +18,7 @@ _$_NoteDto _$$_NoteDtoFromJson(Map<String, dynamic> json) => _$_NoteDto(
           .fromJson(json['serverTimeStamp'] as Object),
     );
 
-Map<String, dynamic> _$$_NoteDtoToJson(_$_NoteDto instance) =>
+Map<String, dynamic> _$$NoteDtoImplToJson(_$NoteDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'body': instance.body,
@@ -27,14 +28,14 @@ Map<String, dynamic> _$$_NoteDtoToJson(_$_NoteDto instance) =>
           const ServerTimeStampConverter().toJson(instance.serverTimeStamp),
     };
 
-_$_TodoItemDto _$$_TodoItemDtoFromJson(Map<String, dynamic> json) =>
-    _$_TodoItemDto(
+_$TodoItemDtoImpl _$$TodoItemDtoImplFromJson(Map<String, dynamic> json) =>
+    _$TodoItemDtoImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       done: json['done'] as bool,
     );
 
-Map<String, dynamic> _$$_TodoItemDtoToJson(_$_TodoItemDto instance) =>
+Map<String, dynamic> _$$TodoItemDtoImplToJson(_$TodoItemDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

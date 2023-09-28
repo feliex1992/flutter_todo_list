@@ -7,68 +7,69 @@ import 'package:flutter_todo_list/domain/notes/note_failure.dart';
 import 'package:flutter_todo_list/domain/notes/value_objects.dart';
 import 'package:flutter_todo_list/presentation/notes/note_form/misc/todo_item_presentation_classes.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 
 part 'note_form_event.dart';
 part 'note_form_state.dart';
 part 'note_form_bloc.freezed.dart';
 
+@injectable
 class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
   final INoteRepository _noteRepository;
 
   NoteFormBloc(this._noteRepository) : super(NoteFormState.initial()) {
-    on<NoteFormEvent>((event, emit) async* {
-      yield* event.map(
-        initialized: (e) async* {
-          yield e.initialNoteOption.fold(
-            () => state,
-            (initialNote) => state.copyWith(
-              note: initialNote,
-              isEditing: true,
-            ),
-          );
-        },
-        bodyChanged: (e) async* {
-          yield state.copyWith(
-            note: state.note.copyWith(body: NoteBody(e.bodyStr)),
-            saveFailureOrSuccessOption: none(),
-          );
-        },
-        colorChanged: (e) async* {
-          yield state.copyWith(
-            note: state.note.copyWith(color: NoteColor(e.color)),
-            saveFailureOrSuccessOption: none(),
-          );
-        },
-        todosChanged: (e) async* {
-          yield state.copyWith(
-            note: state.note.copyWith(
-              todos: List3(e.todos.map((primitive) => primitive.toDomain())),
-            ),
-            saveFailureOrSuccessOption: none(),
-          );
-        },
-        saved: (e) async* {
-          Either<NoteFailure, Unit>? failureOrSuccess;
+    on<NoteFormEvent>((event, emit) async {
+      if (event is _Initialized) {
+        emit(event.initialNoteOption.fold(
+          () => NoteFormState.initial(),
+          (initialNote) => NoteFormState.initial().copyWith(
+            note: initialNote,
+            isEditing: true,
+          ),
+        ));
+      } else if (event is _BodyChanged) {
+        emit(NoteFormState.initial().copyWith(
+          note: NoteFormState.initial().note.copyWith(
+                body: NoteBody(event.bodyStr),
+              ),
+          saveFailureOrSuccessOption: none(),
+        ));
+      } else if (event is _ColorChanged) {
+        emit(NoteFormState.initial().copyWith(
+          note: NoteFormState.initial()
+              .note
+              .copyWith(color: NoteColor(event.color)),
+          saveFailureOrSuccessOption: none(),
+        ));
+      } else if (event is _TodosChanged) {
+        emit(NoteFormState.initial().copyWith(
+          note: NoteFormState.initial().note.copyWith(
+                todos:
+                    List3(event.todos.map((primitive) => primitive.toDomain())),
+              ),
+          saveFailureOrSuccessOption: none(),
+        ));
+      } else if (event is _Saved) {
+        Either<NoteFailure, Unit>? failureOrSuccess;
 
-          yield state.copyWith(
-            isSaving: true,
-            saveFailureOrSuccessOption: none(),
-          );
+        emit(NoteFormState.initial().copyWith(
+          isSaving: true,
+          saveFailureOrSuccessOption: none(),
+        ));
 
-          if (state.note.failureOption.isNone()) {
-            failureOrSuccess = state.isEditing
-                ? await _noteRepository.update(state.note)
-                : await _noteRepository.create(state.note);
-          }
+        if (NoteFormState.initial().note.failureOption.isNone()) {
+          failureOrSuccess = NoteFormState.initial().isEditing
+              ? await _noteRepository.update(NoteFormState.initial().note)
+              : await _noteRepository.create(NoteFormState.initial().note);
+        }
 
-          yield state.copyWith(
-            isSaving: false,
-            showErrorMessages: true,
-            saveFailureOrSuccessOption: optionOf(failureOrSuccess),
-          );
-        },
-      );
+        emit(NoteFormState.initial().copyWith(
+          isSaving: false,
+          showErrorMessages: true,
+          saveFailureOrSuccessOption: optionOf(failureOrSuccess),
+        ));
+      }
     });
   }
 }

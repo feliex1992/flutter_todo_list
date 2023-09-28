@@ -48,7 +48,6 @@ class NotesOverViewPage extends StatelessWidget {
                         'Unexpected error occured while deleting, please contact support.',
                     insufficientPermission: (_) => 'Insufficient Permission.',
                     unableToUpdate: (_) => 'Imposible Error',
-                    unableToDelete: (_) => 'Imposible Error',
                   ),
                 ).show(context);
               },
@@ -72,7 +71,7 @@ class NotesOverViewPage extends StatelessWidget {
           body: NotesOverviewBody(),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              // TODO: Navigate to NoteFormPage
+              AutoRouter.of(context).push(NoteFormRoute());
             },
             child: Icon(Icons.add),
           ),

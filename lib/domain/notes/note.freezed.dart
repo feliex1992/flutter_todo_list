@@ -74,9 +74,10 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
 }
 
 /// @nodoc
-abstract class _$$_NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
-  factory _$$_NoteCopyWith(_$_Note value, $Res Function(_$_Note) then) =
-      __$$_NoteCopyWithImpl<$Res>;
+abstract class _$$NoteImplCopyWith<$Res> implements $NoteCopyWith<$Res> {
+  factory _$$NoteImplCopyWith(
+          _$NoteImpl value, $Res Function(_$NoteImpl) then) =
+      __$$NoteImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -84,9 +85,10 @@ abstract class _$$_NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res, _$_Note>
-    implements _$$_NoteCopyWith<$Res> {
-  __$$_NoteCopyWithImpl(_$_Note _value, $Res Function(_$_Note) _then)
+class __$$NoteImplCopyWithImpl<$Res>
+    extends _$NoteCopyWithImpl<$Res, _$NoteImpl>
+    implements _$$NoteImplCopyWith<$Res> {
+  __$$NoteImplCopyWithImpl(_$NoteImpl _value, $Res Function(_$NoteImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,7 +99,7 @@ class __$$_NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res, _$_Note>
     Object? color = null,
     Object? todos = null,
   }) {
-    return _then(_$_Note(
+    return _then(_$NoteImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -120,8 +122,8 @@ class __$$_NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res, _$_Note>
 
 /// @nodoc
 
-class _$_Note extends _Note {
-  const _$_Note(
+class _$NoteImpl extends _Note {
+  const _$NoteImpl(
       {required this.id,
       required this.body,
       required this.color,
@@ -146,7 +148,7 @@ class _$_Note extends _Note {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Note &&
+            other is _$NoteImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.body, body) || other.body == body) &&
             (identical(other.color, color) || other.color == color) &&
@@ -159,8 +161,8 @@ class _$_Note extends _Note {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NoteCopyWith<_$_Note> get copyWith =>
-      __$$_NoteCopyWithImpl<_$_Note>(this, _$identity);
+  _$$NoteImplCopyWith<_$NoteImpl> get copyWith =>
+      __$$NoteImplCopyWithImpl<_$NoteImpl>(this, _$identity);
 }
 
 abstract class _Note extends Note {
@@ -168,7 +170,7 @@ abstract class _Note extends Note {
       {required final UniqueId id,
       required final NoteBody body,
       required final NoteColor color,
-      required final List3<TodoItem> todos}) = _$_Note;
+      required final List3<TodoItem> todos}) = _$NoteImpl;
   const _Note._() : super._();
 
   @override
@@ -181,5 +183,6 @@ abstract class _Note extends Note {
   List3<TodoItem> get todos;
   @override
   @JsonKey(ignore: true)
-  _$$_NoteCopyWith<_$_Note> get copyWith => throw _privateConstructorUsedError;
+  _$$NoteImplCopyWith<_$NoteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

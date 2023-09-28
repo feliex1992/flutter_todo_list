@@ -90,10 +90,10 @@ class _$NoteDtoCopyWithImpl<$Res, $Val extends NoteDto>
 }
 
 /// @nodoc
-abstract class _$$_NoteDtoCopyWith<$Res> implements $NoteDtoCopyWith<$Res> {
-  factory _$$_NoteDtoCopyWith(
-          _$_NoteDto value, $Res Function(_$_NoteDto) then) =
-      __$$_NoteDtoCopyWithImpl<$Res>;
+abstract class _$$NoteDtoImplCopyWith<$Res> implements $NoteDtoCopyWith<$Res> {
+  factory _$$NoteDtoImplCopyWith(
+          _$NoteDtoImpl value, $Res Function(_$NoteDtoImpl) then) =
+      __$$NoteDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -105,10 +105,11 @@ abstract class _$$_NoteDtoCopyWith<$Res> implements $NoteDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_NoteDtoCopyWithImpl<$Res>
-    extends _$NoteDtoCopyWithImpl<$Res, _$_NoteDto>
-    implements _$$_NoteDtoCopyWith<$Res> {
-  __$$_NoteDtoCopyWithImpl(_$_NoteDto _value, $Res Function(_$_NoteDto) _then)
+class __$$NoteDtoImplCopyWithImpl<$Res>
+    extends _$NoteDtoCopyWithImpl<$Res, _$NoteDtoImpl>
+    implements _$$NoteDtoImplCopyWith<$Res> {
+  __$$NoteDtoImplCopyWithImpl(
+      _$NoteDtoImpl _value, $Res Function(_$NoteDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -120,7 +121,7 @@ class __$$_NoteDtoCopyWithImpl<$Res>
     Object? todos = null,
     Object? serverTimeStamp = null,
   }) {
-    return _then(_$_NoteDto(
+    return _then(_$NoteDtoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -147,8 +148,8 @@ class __$$_NoteDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_NoteDto extends _NoteDto {
-  const _$_NoteDto(
+class _$NoteDtoImpl extends _NoteDto {
+  const _$NoteDtoImpl(
       {this.id,
       required this.body,
       required this.color,
@@ -157,8 +158,8 @@ class _$_NoteDto extends _NoteDto {
       : _todos = todos,
         super._();
 
-  factory _$_NoteDto.fromJson(Map<String, dynamic> json) =>
-      _$$_NoteDtoFromJson(json);
+  factory _$NoteDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NoteDtoImplFromJson(json);
 
   @override
   final String? id;
@@ -187,7 +188,7 @@ class _$_NoteDto extends _NoteDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NoteDto &&
+            other is _$NoteDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.body, body) || other.body == body) &&
             (identical(other.color, color) || other.color == color) &&
@@ -204,12 +205,12 @@ class _$_NoteDto extends _NoteDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NoteDtoCopyWith<_$_NoteDto> get copyWith =>
-      __$$_NoteDtoCopyWithImpl<_$_NoteDto>(this, _$identity);
+  _$$NoteDtoImplCopyWith<_$NoteDtoImpl> get copyWith =>
+      __$$NoteDtoImplCopyWithImpl<_$NoteDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NoteDtoToJson(
+    return _$$NoteDtoImplToJson(
       this,
     );
   }
@@ -222,10 +223,10 @@ abstract class _NoteDto extends NoteDto {
       required final int color,
       required final List<TodoItemDto> todos,
       @ServerTimeStampConverter()
-      required final FieldValue serverTimeStamp}) = _$_NoteDto;
+      required final FieldValue serverTimeStamp}) = _$NoteDtoImpl;
   const _NoteDto._() : super._();
 
-  factory _NoteDto.fromJson(Map<String, dynamic> json) = _$_NoteDto.fromJson;
+  factory _NoteDto.fromJson(Map<String, dynamic> json) = _$NoteDtoImpl.fromJson;
 
   @override
   String? get id;
@@ -240,7 +241,7 @@ abstract class _NoteDto extends NoteDto {
   FieldValue get serverTimeStamp;
   @override
   @JsonKey(ignore: true)
-  _$$_NoteDtoCopyWith<_$_NoteDto> get copyWith =>
+  _$$NoteDtoImplCopyWith<_$NoteDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -304,22 +305,22 @@ class _$TodoItemDtoCopyWithImpl<$Res, $Val extends TodoItemDto>
 }
 
 /// @nodoc
-abstract class _$$_TodoItemDtoCopyWith<$Res>
+abstract class _$$TodoItemDtoImplCopyWith<$Res>
     implements $TodoItemDtoCopyWith<$Res> {
-  factory _$$_TodoItemDtoCopyWith(
-          _$_TodoItemDto value, $Res Function(_$_TodoItemDto) then) =
-      __$$_TodoItemDtoCopyWithImpl<$Res>;
+  factory _$$TodoItemDtoImplCopyWith(
+          _$TodoItemDtoImpl value, $Res Function(_$TodoItemDtoImpl) then) =
+      __$$TodoItemDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String name, bool done});
 }
 
 /// @nodoc
-class __$$_TodoItemDtoCopyWithImpl<$Res>
-    extends _$TodoItemDtoCopyWithImpl<$Res, _$_TodoItemDto>
-    implements _$$_TodoItemDtoCopyWith<$Res> {
-  __$$_TodoItemDtoCopyWithImpl(
-      _$_TodoItemDto _value, $Res Function(_$_TodoItemDto) _then)
+class __$$TodoItemDtoImplCopyWithImpl<$Res>
+    extends _$TodoItemDtoCopyWithImpl<$Res, _$TodoItemDtoImpl>
+    implements _$$TodoItemDtoImplCopyWith<$Res> {
+  __$$TodoItemDtoImplCopyWithImpl(
+      _$TodoItemDtoImpl _value, $Res Function(_$TodoItemDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -329,7 +330,7 @@ class __$$_TodoItemDtoCopyWithImpl<$Res>
     Object? name = null,
     Object? done = null,
   }) {
-    return _then(_$_TodoItemDto(
+    return _then(_$TodoItemDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -348,13 +349,13 @@ class __$$_TodoItemDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TodoItemDto extends _TodoItemDto {
-  const _$_TodoItemDto(
+class _$TodoItemDtoImpl extends _TodoItemDto {
+  const _$TodoItemDtoImpl(
       {required this.id, required this.name, required this.done})
       : super._();
 
-  factory _$_TodoItemDto.fromJson(Map<String, dynamic> json) =>
-      _$$_TodoItemDtoFromJson(json);
+  factory _$TodoItemDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TodoItemDtoImplFromJson(json);
 
   @override
   final String id;
@@ -372,7 +373,7 @@ class _$_TodoItemDto extends _TodoItemDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TodoItemDto &&
+            other is _$TodoItemDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.done, done) || other.done == done));
@@ -385,12 +386,12 @@ class _$_TodoItemDto extends _TodoItemDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TodoItemDtoCopyWith<_$_TodoItemDto> get copyWith =>
-      __$$_TodoItemDtoCopyWithImpl<_$_TodoItemDto>(this, _$identity);
+  _$$TodoItemDtoImplCopyWith<_$TodoItemDtoImpl> get copyWith =>
+      __$$TodoItemDtoImplCopyWithImpl<_$TodoItemDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TodoItemDtoToJson(
+    return _$$TodoItemDtoImplToJson(
       this,
     );
   }
@@ -400,11 +401,11 @@ abstract class _TodoItemDto extends TodoItemDto {
   const factory _TodoItemDto(
       {required final String id,
       required final String name,
-      required final bool done}) = _$_TodoItemDto;
+      required final bool done}) = _$TodoItemDtoImpl;
   const _TodoItemDto._() : super._();
 
   factory _TodoItemDto.fromJson(Map<String, dynamic> json) =
-      _$_TodoItemDto.fromJson;
+      _$TodoItemDtoImpl.fromJson;
 
   @override
   String get id;
@@ -414,6 +415,6 @@ abstract class _TodoItemDto extends TodoItemDto {
   bool get done;
   @override
   @JsonKey(ignore: true)
-  _$$_TodoItemDtoCopyWith<_$_TodoItemDto> get copyWith =>
+  _$$TodoItemDtoImplCopyWith<_$TodoItemDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -123,8 +123,6 @@ class NoteRepository implements INoteRepository {
     } on PlatformException catch (e) {
       if (e.message!.contains('PERMISSION_DENIED')) {
         return left(NoteFailure.insufficientPermission());
-      } else if (e.message!.contains('NOT_FOUND')) {
-        return left(NoteFailure.unableToDelete());
       } else {
         return left(NoteFailure.unexpected());
       }

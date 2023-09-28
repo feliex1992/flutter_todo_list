@@ -68,21 +68,22 @@ class _$TodoItemCopyWithImpl<$Res, $Val extends TodoItem>
 }
 
 /// @nodoc
-abstract class _$$_TodoItemCopyWith<$Res> implements $TodoItemCopyWith<$Res> {
-  factory _$$_TodoItemCopyWith(
-          _$_TodoItem value, $Res Function(_$_TodoItem) then) =
-      __$$_TodoItemCopyWithImpl<$Res>;
+abstract class _$$TodoItemImplCopyWith<$Res>
+    implements $TodoItemCopyWith<$Res> {
+  factory _$$TodoItemImplCopyWith(
+          _$TodoItemImpl value, $Res Function(_$TodoItemImpl) then) =
+      __$$TodoItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UniqueId id, TodoName name, bool done});
 }
 
 /// @nodoc
-class __$$_TodoItemCopyWithImpl<$Res>
-    extends _$TodoItemCopyWithImpl<$Res, _$_TodoItem>
-    implements _$$_TodoItemCopyWith<$Res> {
-  __$$_TodoItemCopyWithImpl(
-      _$_TodoItem _value, $Res Function(_$_TodoItem) _then)
+class __$$TodoItemImplCopyWithImpl<$Res>
+    extends _$TodoItemCopyWithImpl<$Res, _$TodoItemImpl>
+    implements _$$TodoItemImplCopyWith<$Res> {
+  __$$TodoItemImplCopyWithImpl(
+      _$TodoItemImpl _value, $Res Function(_$TodoItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +93,7 @@ class __$$_TodoItemCopyWithImpl<$Res>
     Object? name = null,
     Object? done = null,
   }) {
-    return _then(_$_TodoItem(
+    return _then(_$TodoItemImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -111,8 +112,9 @@ class __$$_TodoItemCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TodoItem extends _TodoItem {
-  const _$_TodoItem({required this.id, required this.name, required this.done})
+class _$TodoItemImpl extends _TodoItem {
+  const _$TodoItemImpl(
+      {required this.id, required this.name, required this.done})
       : super._();
 
   @override
@@ -131,7 +133,7 @@ class _$_TodoItem extends _TodoItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TodoItem &&
+            other is _$TodoItemImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.done, done) || other.done == done));
@@ -143,15 +145,15 @@ class _$_TodoItem extends _TodoItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TodoItemCopyWith<_$_TodoItem> get copyWith =>
-      __$$_TodoItemCopyWithImpl<_$_TodoItem>(this, _$identity);
+  _$$TodoItemImplCopyWith<_$TodoItemImpl> get copyWith =>
+      __$$TodoItemImplCopyWithImpl<_$TodoItemImpl>(this, _$identity);
 }
 
 abstract class _TodoItem extends TodoItem {
   const factory _TodoItem(
       {required final UniqueId id,
       required final TodoName name,
-      required final bool done}) = _$_TodoItem;
+      required final bool done}) = _$TodoItemImpl;
   const _TodoItem._() : super._();
 
   @override
@@ -162,6 +164,6 @@ abstract class _TodoItem extends TodoItem {
   bool get done;
   @override
   @JsonKey(ignore: true)
-  _$$_TodoItemCopyWith<_$_TodoItem> get copyWith =>
+  _$$TodoItemImplCopyWith<_$TodoItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

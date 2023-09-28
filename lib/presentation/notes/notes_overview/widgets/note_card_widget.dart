@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo_list/application/notes/note_actor/note_actor_bloc.dart';
 import 'package:flutter_todo_list/domain/notes/note.dart';
 import 'package:flutter_todo_list/domain/notes/todo_item.dart';
+import 'package:flutter_todo_list/presentation/routes/router.gr.dart';
 import 'package:kt_dart/kt.dart';
 
 class NoteCard extends StatelessWidget {
@@ -19,7 +21,7 @@ class NoteCard extends StatelessWidget {
       color: note.color.getOrCrash(),
       child: InkWell(
         onTap: () {
-          // TODO: implement navigation.
+          AutoRouter.of(context).push(NoteFormRoute(editedNote: note));
         },
         onLongPress: () {
           final noteActorBloc = context.read<NoteActorBloc>();

@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo_list/application/notes/note_form/note_form_bloc.dart';
 import 'package:flutter_todo_list/domain/notes/note.dart';
 import 'package:flutter_todo_list/injection.dart';
+import 'package:flutter_todo_list/presentation/notes/note_form/widgets/body_filed_widget.dart';
 import 'package:flutter_todo_list/presentation/routes/router.gr.dart';
 
 @RoutePage()
@@ -72,7 +73,7 @@ class SavingInProgressOverlay extends StatelessWidget {
     Key? key,
     required this.isSaving,
   }) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
@@ -92,9 +93,9 @@ class SavingInProgressOverlay extends StatelessWidget {
               Text(
                 'Saving',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.white,
-                  fontSize: 16,
-                ),
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
               ),
             ],
           ),
@@ -102,8 +103,6 @@ class SavingInProgressOverlay extends StatelessWidget {
       ),
     );
   }
-
-  
 }
 
 class NoteFormPageScaffold extends StatelessWidget {
@@ -129,6 +128,20 @@ class NoteFormPageScaffold extends StatelessWidget {
             },
           ),
         ],
+      ),
+      body: BlocBuilder<NoteFormBloc, NoteFormState>(
+        buildWhen: (p, c) => p.showErrorMessages != c.showErrorMessages,
+        builder: (context, state) {
+          return Form(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const BodyField()
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

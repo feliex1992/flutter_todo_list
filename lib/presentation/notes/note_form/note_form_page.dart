@@ -7,6 +7,7 @@ import 'package:flutter_todo_list/application/notes/note_form/note_form_bloc.dar
 import 'package:flutter_todo_list/domain/notes/note.dart';
 import 'package:flutter_todo_list/injection.dart';
 import 'package:flutter_todo_list/presentation/notes/note_form/widgets/body_filed_widget.dart';
+import 'package:flutter_todo_list/presentation/notes/note_form/widgets/color_field_widget.dart';
 import 'package:flutter_todo_list/presentation/routes/router.gr.dart';
 
 @RoutePage()
@@ -136,7 +137,8 @@ class NoteFormPageScaffold extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const BodyField()
+                  const BodyField(),
+                  const ColorField()
                 ],
               ),
             ),

@@ -6,9 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo_list/application/notes/note_form/note_form_bloc.dart';
 import 'package:flutter_todo_list/domain/notes/note.dart';
 import 'package:flutter_todo_list/injection.dart';
+import 'package:flutter_todo_list/presentation/notes/note_form/misc/todo_item_presentation_classes.dart';
+import 'package:flutter_todo_list/presentation/notes/note_form/widgets/add_todo_tile_widget.dart';
 import 'package:flutter_todo_list/presentation/notes/note_form/widgets/body_filed_widget.dart';
 import 'package:flutter_todo_list/presentation/notes/note_form/widgets/color_field_widget.dart';
 import 'package:flutter_todo_list/presentation/routes/router.gr.dart';
+import 'package:provider/provider.dart';
 
 @RoutePage()
 class NoteFormPage extends StatelessWidget {
@@ -133,13 +136,17 @@ class NoteFormPageScaffold extends StatelessWidget {
       body: BlocBuilder<NoteFormBloc, NoteFormState>(
         buildWhen: (p, c) => p.showErrorMessages != c.showErrorMessages,
         builder: (context, state) {
-          return Form(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const BodyField(),
-                  const ColorField()
-                ],
+          return ChangeNotifierProvider(
+            create: (_) => FormTodos(),
+            child: Form(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const BodyField(),
+                    const ColorField(),
+                    const AddTodoTile()
+                  ],
+                ),
               ),
             ),
           );

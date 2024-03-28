@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_todo_list/domain/auth/auth_failure.dart';
 import 'package:flutter_todo_list/domain/auth/i_auth_facade.dart';
 import 'package:flutter_todo_list/domain/auth/user_model.dart';
@@ -37,7 +36,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         password: passwordStr,
       );
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         return left(const AuthFailure.emailAlreadyInUse());
       } else {
@@ -87,7 +86,7 @@ class FirebaseAuthFacade implements IAuthFacade {
 
       await _firebaseAuth.signInWithCredential(authCredential);
       return right(unit);
-    } on PlatformException catch (_) {
+    } on FirebaseException catch (_) {
       return left(const AuthFailure.serverError());
     }
   }

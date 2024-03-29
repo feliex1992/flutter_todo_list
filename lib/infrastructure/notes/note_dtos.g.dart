@@ -23,7 +23,7 @@ Map<String, dynamic> _$$NoteDtoImplToJson(_$NoteDtoImpl instance) =>
       'id': instance.id,
       'body': instance.body,
       'color': instance.color,
-      'todos': instance.todos,
+      'todos': instance.todos.map((e) => e.toJson()).toList(),
       'serverTimeStamp':
           const ServerTimeStampConverter().toJson(instance.serverTimeStamp),
     };

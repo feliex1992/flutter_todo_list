@@ -36,9 +36,18 @@ abstract class Note implements _$Note {
               .map((todoItem) => todoItem.failureOption)
               .filter((o) => o.isSome())
               // If we can't get the 0th element, the list is empty. In such a case, it's valid
-              .getOrElse(0, (_) => none())
-              .fold(() => right(unit), (a) => left(a)),
+              .getOrElse(
+                0,
+                (_) => none(),
+              )
+              .fold(
+                () => right(unit),
+                (a) => left(a),
+              ),
         )
-        .fold((l) => some(l), (r) => none());
+        .fold(
+          (l) => some(l),
+          (r) => none(),
+        );
   }
 }

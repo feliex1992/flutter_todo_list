@@ -17,7 +17,7 @@ abstract class TodoItemPrimitive implements _$TodoItemPrimitive {
 
   const factory TodoItemPrimitive({
     required UniqueId id,
-    required String name,
+    String? name,
     required bool done,
   }) = _TodoItemPrimitive;
 

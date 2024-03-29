@@ -12,12 +12,12 @@ part of 'todo_item_presentation_classes.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TodoItemPrimitive {
   UniqueId get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   bool get done => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +31,7 @@ abstract class $TodoItemPrimitiveCopyWith<$Res> {
           TodoItemPrimitive value, $Res Function(TodoItemPrimitive) then) =
       _$TodoItemPrimitiveCopyWithImpl<$Res, TodoItemPrimitive>;
   @useResult
-  $Res call({UniqueId id, String name, bool done});
+  $Res call({UniqueId id, String? name, bool done});
 }
 
 /// @nodoc
@@ -48,7 +48,7 @@ class _$TodoItemPrimitiveCopyWithImpl<$Res, $Val extends TodoItemPrimitive>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
+    Object? name = freezed,
     Object? done = null,
   }) {
     return _then(_value.copyWith(
@@ -56,10 +56,10 @@ class _$TodoItemPrimitiveCopyWithImpl<$Res, $Val extends TodoItemPrimitive>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       done: null == done
           ? _value.done
           : done // ignore: cast_nullable_to_non_nullable
@@ -76,7 +76,7 @@ abstract class _$$TodoItemPrimitiveImplCopyWith<$Res>
       __$$TodoItemPrimitiveImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UniqueId id, String name, bool done});
+  $Res call({UniqueId id, String? name, bool done});
 }
 
 /// @nodoc
@@ -91,7 +91,7 @@ class __$$TodoItemPrimitiveImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
+    Object? name = freezed,
     Object? done = null,
   }) {
     return _then(_$TodoItemPrimitiveImpl(
@@ -99,10 +99,10 @@ class __$$TodoItemPrimitiveImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       done: null == done
           ? _value.done
           : done // ignore: cast_nullable_to_non_nullable
@@ -115,13 +115,13 @@ class __$$TodoItemPrimitiveImplCopyWithImpl<$Res>
 
 class _$TodoItemPrimitiveImpl extends _TodoItemPrimitive {
   const _$TodoItemPrimitiveImpl(
-      {required this.id, required this.name, required this.done})
+      {required this.id, this.name, required this.done})
       : super._();
 
   @override
   final UniqueId id;
   @override
-  final String name;
+  final String? name;
   @override
   final bool done;
 
@@ -131,7 +131,7 @@ class _$TodoItemPrimitiveImpl extends _TodoItemPrimitive {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TodoItemPrimitiveImpl &&
@@ -154,14 +154,14 @@ class _$TodoItemPrimitiveImpl extends _TodoItemPrimitive {
 abstract class _TodoItemPrimitive extends TodoItemPrimitive {
   const factory _TodoItemPrimitive(
       {required final UniqueId id,
-      required final String name,
+      final String? name,
       required final bool done}) = _$TodoItemPrimitiveImpl;
   const _TodoItemPrimitive._() : super._();
 
   @override
   UniqueId get id;
   @override
-  String get name;
+  String? get name;
   @override
   bool get done;
   @override

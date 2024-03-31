@@ -12,7 +12,8 @@ class AppWidget extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
+          create: (context) =>
+              getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         )
       ],
       child: MaterialApp.router(
@@ -20,6 +21,10 @@ class AppWidget extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter().config(),
         theme: ThemeData.light().copyWith(
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.green[800],
+            foregroundColor: Colors.grey[100],
+          ),
           colorScheme: const ColorScheme.light().copyWith(
             primary: Colors.green[800],
             secondary: Colors.blueAccent,
